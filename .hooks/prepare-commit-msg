@@ -1,0 +1,2 @@
+#!/usr/bin/sh
+exec < /dev/tty && yarn run -B cz --hook || true

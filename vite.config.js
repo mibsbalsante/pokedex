@@ -9,7 +9,12 @@ export default defineConfig({
   plugins: [vue(), vueJsx()],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+      "@ast": fileURLToPath(new URL('./src/assets', import.meta.url)),
+      "@cmp": fileURLToPath(new URL('./src/components', import.meta.url)),
     }
+  },
+  server: {
+    port: 9000
   }
 })

@@ -1,3 +1,9 @@
+<script setup>
+import GlobalSearch from "@cmp/GlobalSearch.vue"
+</script>
+
 <template>
-  <div>page</div>
+  <div>
+    <GlobalSearch />
+  </div>
 </template>

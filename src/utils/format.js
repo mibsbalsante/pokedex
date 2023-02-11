@@ -1,27 +1,27 @@
-export const formatPokemonData = ({
-  id,
-  abilities,
-  height,
-  name,
-  sprites,
-  types,
-  weight,
-}) => ({
-  id,
-  abilities: abilities.map(({ ability }) => ability.name),
-  height,
-  name,
-  sprites: {
-    back_default: sprites.back_default,
-    back_female: sprites.back_female,
-    back_shiny: sprites.back_shiny,
-    back_shiny_female: sprites.back_shiny_female,
-    front_default: sprites.front_default,
-    front_female: sprites.front_female,
-    front_shiny: sprites.front_shiny,
-    front_shiny_female: sprites.front_shiny_female,
-    other: sprites.other,
-  },
-  types: types.map(({ type }) => type.name),
-  weight,
-})
+export const formatPokemonData = (
+  { id, abilities, height, name, sprites, types, weight },
+  { chain }
+) => {
+  const evolutionChain = [[chain.species.name]]
+  let currentPokemon = chain.evolves_to
+
+  while (currentPokemon?.[0]) {
+    evolutionChain.push(currentPokemon.map(({ species }) => species.name))
+    currentPokemon = currentPokemon[0].evolves_to
+  }
+
+  return {
+    id,
+    abilities: abilities.map(({ ability }) => ability.name),
+    height,
+    name,
+    sprites: {
+      back_default: sprites.back_default,
+      front_default: sprites.front_default,
+      other: sprites.other,
+    },
+    types: types.map(({ type }) => type.name),
+    weight,
+    evolutionChain,
+  }
+}

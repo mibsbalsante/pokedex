@@ -12,10 +12,48 @@ const handleSubmit = () => isSubmitEnabled.value && getSearch()
 </script>
 
 <template>
-  <form @submit.prevent="handleSubmit">
-    <label for="search">
-      <input type="text" id="search" v-model="currentSearch" />
+  <form class="search" @submit.prevent="handleSubmit">
+    <label class="search__field" for="search"
+      >Pokemon Name
+      <input
+        class="search__input"
+        type="text"
+        id="search"
+        v-model="currentSearch"
+      />
     </label>
-    <button type="submit" :disabled="!isSubmitEnabled">Pesquisar</button>
+    <button class="search__button" type="submit" :disabled="!isSubmitEnabled">
+      Search
+    </button>
   </form>
 </template>
+
+<style scoped lang="scss">
+.search {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  max-width: 300px;
+  width: 100%;
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 24px;
+  }
+
+  &__input,
+  &__button {
+    width: 100%;
+    border-radius: 100px;
+    border-width: 1px;
+    border-style: solid;
+    padding: 8px 24px;
+  }
+}
+</style>

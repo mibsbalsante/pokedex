@@ -3,15 +3,15 @@
   --color-white: #fcfcfc;
   --color-grey: #979797;
   --color-black: #262626;
-  --color-blue-lighter: #a8e6cf;
-  --color-blue-darker: #75b39c;
+  --color-green-lighter: #a8e6cf;
+  --color-green-darker: #75b39c;
 
   /* scheme vars */
   --color-text: var(--color-black);
   --color-background: var(--color-white);
 
-  --color-blue: var(--color-blue-lighter);
-  --color-blue-helper: var(--color-blue-darker);
+  --color-green: var(--color-green-lighter);
+  --color-green-helper: var(--color-green-darker);
 }
 
 @media (prefers-color-scheme: dark) {

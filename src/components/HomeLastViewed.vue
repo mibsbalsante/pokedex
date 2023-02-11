@@ -4,8 +4,9 @@ import { RouterLink } from "vue-router"
 import { usePokemonStore } from "@str/pokemon"
 
 const { list } = usePokemonStore()
-const reverseList = list.value
+let reverseList = [...list.value]
 reverseList.reverse()
+reverseList = reverseList.slice(0, 12)
 </script>
 
 <template>
@@ -45,6 +46,7 @@ reverseList.reverse()
     text-align: center;
     text-decoration: none;
     transition: color 0.3s ease-in-out;
+    text-transform: capitalize;
 
     &:hover {
       color: var(--color-green-helper);

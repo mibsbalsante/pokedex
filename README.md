@@ -1,38 +1,35 @@
 # pokedex
-Building my own Pokédex using Poke API@v2
+
+Building my own Pokedex using Poke API@v2
 
 <hr/>
 
-This template should help get you started developing with Vue 3 in Vite.
+-
 
-## Recommended IDE Setup
+## Tools and setup
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+- Commitizen for commit normalization
+- Vue.js v3 + JSX plugins
+- Vue Router
+- Pinia
+- Vite
+- SASS -> .scss syntax
+- Yarn v3.3.1
+- Node.js v16-v17
 
-## Customize configuration
+## How to run
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+- Install [Node.js](https://nodejs.org/en/download) using version v18 or above
+- Install [Yarn](https://yarnpkg.com/pt-BR/docs/install)
+- Clone this repository
+- Run `yarn && yarn dev` to install the dependencies and run the project
+- Open your [9000 port](http://localhost:9000)
 
-## Project Setup
+## Extras instructions
 
-```sh
-yarn
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-yarn dev
-```
-
-### Compile and Minify for Production
-
-```sh
-yarn build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-yarn lint
-```
+- The interface change following your device color scheme. To toggle quickly between color schemes, do the following:
+  - Open Chrome Inspect Tools
+  - CTRL + P
+  - "Show Rendering"
+  - Scroll all the way until you find **Emulate CSS media feature prefers-color-scheme**
+- Any questions, reach me out through [my email](mailto:mibsbalsante@gmail.com)

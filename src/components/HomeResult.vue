@@ -49,6 +49,7 @@ const { currentResult } = usePokemonStore()
       </li>
     </ul>
   </div>
+  <div v-else></div>
 </template>
 
 <style scoped lang="scss">

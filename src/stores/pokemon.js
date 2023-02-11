@@ -12,7 +12,6 @@ const pokemonStore = defineStore("pokemon", () => {
 
   const resultFromSearch = ref(null)
 
-  const currentSearch = ref("")
   const currentResult = ref(null)
 
   function _handleAPIData(data) {
@@ -22,8 +21,8 @@ const pokemonStore = defineStore("pokemon", () => {
     })
   }
 
-  function getSearch() {
-    const current = list.value.find(({ name }) => name === currentSearch.value)
+  function getSearch(currentSearch) {
+    const current = list.value.find(({ name }) => name === currentSearch)
 
     if (current) {
       currentResult.value = current
@@ -33,13 +32,13 @@ const pokemonStore = defineStore("pokemon", () => {
     isLoading.value = true
 
     // -- request pokemon
-    fetch(`${API_URL}/pokemon/${currentSearch.value}`)
+    fetch(`${API_URL}/pokemon/${currentSearch}`)
       .then(_handleAPIData)
       .then(newItem => {
         resultFromSearch.value = newItem
         // -- request species info to get evolution url
-        return fetch(`${API_URL}/pokemon-species/${currentSearch.value}`).then(
-          dt => dt.json()
+        return fetch(`${API_URL}/pokemon-species/${currentSearch}`).then(dt =>
+          dt.json()
         )
       })
       .then(({ evolution_chain }) =>
@@ -60,7 +59,7 @@ const pokemonStore = defineStore("pokemon", () => {
       .finally(() => (isLoading.value = false))
   }
 
-  return { list, isLoading, currentSearch, currentResult, getSearch }
+  return { list, isLoading, currentResult, getSearch }
 })
 
 export const usePokemonStore = () => storeToRefs(pokemonStore())

@@ -1,14 +1,17 @@
 <script setup>
-import { computed } from "vue"
+import { ref, computed } from "vue"
+import { useRouter } from "vue-router"
 
-import { usePokemonStore, usePokemonActions } from "@str/pokemon"
+import { usePokemonStore } from "@str/pokemon"
 
-const { currentSearch, isLoading } = usePokemonStore()
-const { getSearch } = usePokemonActions()
+const router = useRouter()
+const currentSearch = ref("")
+const { isLoading } = usePokemonStore()
 
 const isSubmitEnabled = computed(() => currentSearch.value && !isLoading.value)
 
-const handleSubmit = () => isSubmitEnabled.value && getSearch()
+const handleSubmit = () =>
+  isSubmitEnabled.value && router.push(`/${currentSearch.value}`)
 </script>
 
 <template>

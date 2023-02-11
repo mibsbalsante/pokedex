@@ -32,6 +32,22 @@ const { currentResult } = usePokemonStore()
       alt=""
       srcset=""
     />
+
+    <ul class="result__about">
+      <li class="result__stat">
+        weight <span>{{ currentResult.weight / 10 }}kg</span>
+      </li>
+      <li class="result__stat">
+        height <span>{{ currentResult.height / 10 }}m</span>
+      </li>
+      <li
+        class="result__stat"
+        v-for="stat in currentResult.stats"
+        :key="stat.name"
+      >
+        {{ stat.name.replace(/-/g, " ") }} <span>{{ stat.base_stat }}</span>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -78,6 +94,36 @@ const { currentResult } = usePokemonStore()
     padding: 20px 0;
     max-width: 360px;
     margin: 0 auto;
+  }
+
+  &__about {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 32px 40px;
+    padding-bottom: 32px;
+
+    @include divider {
+      bottom: 0;
+    }
+  }
+  &__stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-width: 80px;
+    width: 20%;
+    text-transform: capitalize;
+
+    span {
+      font-weight: 600;
+      font-size: 1.6rem;
+      line-height: 1.4;
+    }
   }
 }
 </style>

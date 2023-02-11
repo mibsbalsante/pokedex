@@ -39,7 +39,6 @@ const handleSubmit = () =>
   align-items: center;
   padding: 56px 20px 40px;
   width: 100%;
-  margin-bottom: auto;
 
   &__field {
     display: flex;

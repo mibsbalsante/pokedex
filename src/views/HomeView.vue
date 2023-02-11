@@ -24,7 +24,7 @@ import HomeResult from "@cmp/HomeResult.vue"
 
     &__result {
       grid-column: 2;
-      grid-row: 1/3;
+      grid-row: 1/5;
     }
   }
 

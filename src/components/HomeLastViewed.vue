@@ -1,12 +1,15 @@
 <script setup>
+import { computed } from "vue"
 import { RouterLink } from "vue-router"
 
 import { usePokemonStore } from "@str/pokemon"
 
 const { list } = usePokemonStore()
-let reverseList = [...list.value]
-reverseList.reverse()
-reverseList = reverseList.slice(0, 12)
+const reverseList = computed(() => {
+  let newList = [...list.value]
+  newList.reverse()
+  return newList.slice(0, 12)
+})
 </script>
 
 <template>

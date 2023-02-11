@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from "vue-router"
 
 import HomeView from "../views/HomeView.vue"
 
-import { usePokemonActions } from "@str/pokemon"
+import { usePokemonStore, usePokemonActions } from "@str/pokemon"
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -25,6 +25,9 @@ router.beforeEach((to, _, next) => {
     const { getSearch } = usePokemonActions()
 
     getSearch(to.params.name)
+  } else {
+    const { currentResult } = usePokemonStore()
+    currentResult.value = null
   }
 
   next()

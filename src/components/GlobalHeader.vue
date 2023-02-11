@@ -1,5 +1,3 @@
 <template>
-  <header>
-    pokedex header
-  </header>
+  <header>pokedex header</header>
 </template>

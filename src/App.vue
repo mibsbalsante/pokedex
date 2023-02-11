@@ -1,7 +1,7 @@
 <script setup>
-import {  RouterView } from 'vue-router'
+import { RouterView } from "vue-router"
 
-import GlobalHeader from '@cmp/GlobalHeader.vue';
+import GlobalHeader from "@cmp/GlobalHeader.vue"
 </script>
 
 <template>

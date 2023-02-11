@@ -34,9 +34,9 @@ const handleSubmit = () => isSubmitEnabled.value && getSearch()
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 40px 20px;
-  max-width: 300px;
+  padding: 56px 20px 40px;
   width: 100%;
+  margin-bottom: auto;
 
   &__field {
     display: flex;
@@ -45,6 +45,7 @@ const handleSubmit = () => isSubmitEnabled.value && getSearch()
     text-align: center;
     font-size: 1.2rem;
     margin-bottom: 24px;
+    width: 100%;
   }
 
   &__input,

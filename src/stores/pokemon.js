@@ -1,4 +1,4 @@
-import { ref, computed } from "vue"
+import { ref } from "vue"
 import { defineStore, storeToRefs } from "pinia"
 
 import { formatPokemonData } from "@utl/format"
@@ -13,9 +13,7 @@ const pokemonStore = defineStore("pokemon", () => {
   const resultFromSearch = ref(null)
 
   const currentSearch = ref("")
-  const currentResult = computed(() =>
-    list.value.find(({ name }) => name === currentSearch.value)
-  )
+  const currentResult = ref(null)
 
   function _handleAPIData(data) {
     if (data.status < 400) return data.json()
@@ -25,7 +23,12 @@ const pokemonStore = defineStore("pokemon", () => {
   }
 
   function getSearch() {
-    if (currentResult.value?.name === currentSearch.value) return
+    const current = list.value.find(({ name }) => name === currentSearch.value)
+
+    if (current) {
+      currentResult.value = current
+      return
+    }
 
     isLoading.value = true
 
@@ -44,11 +47,13 @@ const pokemonStore = defineStore("pokemon", () => {
         fetch(evolution_chain.url).then(dt => dt.json())
       )
       .then(evolutionChain => {
-        list.value = [
-          ...list.value,
-          formatPokemonData(resultFromSearch.value, evolutionChain),
-        ]
+        const currentPokemon = formatPokemonData(
+          resultFromSearch.value,
+          evolutionChain
+        )
+        list.value = [...list.value, currentPokemon]
         resultFromSearch.value = null
+        currentResult.value = currentPokemon
         saveToStorage(list.value)
       })
       .catch(({ message }) => console.error(message))

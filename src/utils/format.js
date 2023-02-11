@@ -1,5 +1,5 @@
 export const formatPokemonData = (
-  { id, abilities, height, name, sprites, types, weight },
+  { id, abilities, height, name, sprites, stats, types, weight },
   { chain }
 ) => {
   const evolutionChain = [[chain.species.name]]
@@ -20,6 +20,7 @@ export const formatPokemonData = (
       front_default: sprites.front_default,
       other: sprites.other,
     },
+    stats: stats.map(({ base_stat, stat }) => ({ base_stat, name: stat.name })),
     types: types.map(({ type }) => type.name),
     weight,
     evolutionChain,
